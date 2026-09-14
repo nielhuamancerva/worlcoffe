@@ -4,8 +4,8 @@ import './globals.css'
 import { CartProvider } from '@/lib/cart-context'
 
 export const metadata: Metadata = {
-  title: 'El Buen Grano — Café de especialidad',
-  description: 'Descubre cafés de especialidad de tostadores independientes y recibe tu próxima taza en casa.',
+  title: 'El Buen Grano — Marketplace de café de especialidad',
+  description: 'El marketplace donde tostadurías independientes exponen y venden su café de especialidad. Descubre marcas de todo el mundo en un mismo lugar.',
   generator: 'v0.app',
   icons: {
     icon: [
