@@ -6,10 +6,10 @@ import Image from 'next/image'
 import { ArrowLeft, CheckCircle2, PackagePlus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/components/Header'
-import { formatPrice } from '@/lib/products'
+import { coffeeDepartments, coffeeVarieties, formatPrice } from '@/lib/products'
 import { sellers } from '@/lib/sellers'
 
-const categories = ['Grano', 'Molido', 'Listo para tomar']
+const categories = ['Grano', 'Molido']
 const roasts = ['Claro', 'Medio', 'Oscuro']
 const gallery = ['/coffee-1.png', '/coffee-2.png', '/coffee-3.png', '/coffee-4.png', '/coffee-5.png', '/coffee-6.png', '/coffee-7.png', '/coffee-8.png']
 
@@ -18,10 +18,13 @@ export default function PublicarPage() {
   const [brand, setBrand] = useState(sellers[0]?.name ?? '')
   const [name, setName] = useState('')
   const [category, setCategory] = useState(categories[0])
+  const [variety, setVariety] = useState(coffeeVarieties[0])
   const [roast, setRoast] = useState(roasts[1])
   const [price, setPrice] = useState('')
   const [weight, setWeight] = useState('')
   const [origin, setOrigin] = useState('')
+  const [district, setDistrict] = useState('')
+  const [department, setDepartment] = useState(coffeeDepartments[0])
   const [notes, setNotes] = useState('')
   const [description, setDescription] = useState('')
   const [image, setImage] = useState(gallery[0])
@@ -41,7 +44,7 @@ export default function PublicarPage() {
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild className="rounded-full bg-[#2d211c] text-white">
-              <Link href="/marcas">Ver tostadores</Link>
+              <Link href="/">Ir al inicio</Link>
             </Button>
             <Button
               variant="outline"
@@ -52,6 +55,7 @@ export default function PublicarPage() {
                 setPrice('')
                 setWeight('')
                 setOrigin('')
+                setDistrict('')
                 setNotes('')
                 setDescription('')
               }}
@@ -110,11 +114,11 @@ export default function PublicarPage() {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
-                placeholder="Ej. Altura Colombia"
+                placeholder="Ej. Altura Cajamarca"
               />
             </label>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-3">
               <label className="grid gap-2 text-sm font-medium">
                 Categoría
                 <select
@@ -123,6 +127,18 @@ export default function PublicarPage() {
                   className="rounded-md border border-[#d9c9bd] bg-transparent px-3 py-3 outline-none focus:border-[#b65f3d]"
                 >
                   {categories.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="grid gap-2 text-sm font-medium">
+                Variedad
+                <select
+                  value={variety}
+                  onChange={(event) => setVariety(event.target.value)}
+                  className="rounded-md border border-[#d9c9bd] bg-transparent px-3 py-3 outline-none focus:border-[#b65f3d]"
+                >
+                  {coffeeVarieties.map((item) => (
                     <option key={item}>{item}</option>
                   ))}
                 </select>
@@ -143,7 +159,7 @@ export default function PublicarPage() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="grid gap-2 text-sm font-medium">
-                Precio (€)
+                Precio (S/)
                 <input
                   required
                   type="number"
@@ -167,16 +183,40 @@ export default function PublicarPage() {
               </label>
             </div>
 
-            <label className="grid gap-2 text-sm font-medium">
-              Origen
-              <input
-                required
-                value={origin}
-                onChange={(event) => setOrigin(event.target.value)}
-                className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
-                placeholder="Huila, Colombia"
-              />
-            </label>
+            <div className="grid gap-5 sm:grid-cols-3">
+              <label className="grid gap-2 text-sm font-medium">
+                Departamento
+                <select
+                  value={department}
+                  onChange={(event) => setDepartment(event.target.value)}
+                  className="rounded-md border border-[#d9c9bd] bg-transparent px-3 py-3 outline-none focus:border-[#b65f3d]"
+                >
+                  {coffeeDepartments.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="grid gap-2 text-sm font-medium">
+                Provincia
+                <input
+                  required
+                  value={origin}
+                  onChange={(event) => setOrigin(event.target.value)}
+                  className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
+                  placeholder="Jaén"
+                />
+              </label>
+              <label className="grid gap-2 text-sm font-medium">
+                Distrito
+                <input
+                  required
+                  value={district}
+                  onChange={(event) => setDistrict(event.target.value)}
+                  className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
+                  placeholder="Huabal"
+                />
+              </label>
+            </div>
 
             <label className="grid gap-2 text-sm font-medium">
               Notas de cata
@@ -243,6 +283,7 @@ export default function PublicarPage() {
               <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#9b7766]">{brand}</p>
               <p className="mt-1 font-serif text-lg text-[#2d211c]">{name || 'Nombre del café'}</p>
               <p className="mt-1 text-sm text-[#86756e]">{notes || 'Notas de cata'}</p>
+              <p className="mt-1 text-xs text-[#9b7766]">{[district, origin, department].filter(Boolean).join(', ')}</p>
               <p className="mt-3 font-semibold text-[#2d211c]">
                 {Number.isFinite(priceValue) && priceValue > 0 ? formatPrice(priceValue) : '—'}
               </p>
@@ -251,7 +292,7 @@ export default function PublicarPage() {
         </div>
       </main>
       <footer className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-8 text-xs text-[#806c62] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-        <p>© 2026 El Buen Grano</p>
+        <p>© 2026 Mi Cafecito</p>
         <p>Un marketplace para tostadores independientes.</p>
       </footer>
     </div>

@@ -1,3 +1,4 @@
+import { isValidElement } from 'react'
 import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
 
@@ -44,13 +45,21 @@ function Button({
   className,
   variant = 'default',
   size = 'default',
+  asChild = false,
+  children,
   ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
+  // Compatibilidad con `asChild` (estilo Radix): Base UI usa `render` para pintar el hijo (p. ej. un <Link>).
+  const asChildProps =
+    asChild && isValidElement(children)
+      ? { render: children as React.ReactElement<Record<string, unknown>>, nativeButton: false }
+      : { children }
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
+      {...asChildProps}
     />
   )
 }

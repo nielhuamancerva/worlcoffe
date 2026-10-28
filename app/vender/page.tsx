@@ -15,7 +15,7 @@ const benefits = [
   {
     icon: Package,
     title: 'Tú tuestas, nosotros el escaparate',
-    text: 'Publica tus lotes con su origen, notas y formato. Gestionamos la vitrina; tú mantienes tu marca.',
+    text: 'Publica tus lotes con su origen, notas y formato. Gestionamos la vitrina; tú mantienes la identidad de tu café.',
   },
   {
     icon: Wallet,
@@ -25,7 +25,7 @@ const benefits = [
 ]
 
 const steps = [
-  { n: '01', title: 'Cuéntanos sobre ti', text: 'Envía la solicitud con los datos de tu tostaduría.' },
+  { n: '01', title: 'Cuéntanos sobre ti', text: 'Envía la solicitud con los datos de tu café.' },
   { n: '02', title: 'Validamos tu café', text: 'Revisamos calidad y trazabilidad de tus lotes.' },
   { n: '03', title: 'Publica y vende', text: 'Creamos tu perfil y tus cafés aparecen en el catálogo.' },
 ]
@@ -41,11 +41,11 @@ export default function VenderPage() {
           <CheckCircle2 className="mx-auto size-14 text-[#b65f3d]" />
           <h1 className="mt-6 font-serif text-4xl">Solicitud recibida</h1>
           <p className="mt-4 leading-relaxed text-[#806c62]">
-            Gracias por tu interés en unirte a El Buen Grano. Revisaremos tu tostaduría y te contactaremos pronto.
+            Gracias por tu interés en unirte a Mi Cafecito. Revisaremos tu solicitud y te contactaremos pronto.
             Esta es una demostración y no se ha enviado ningún dato real.
           </p>
           <Button asChild className="mt-8 rounded-full bg-[#2d211c] text-white">
-            <Link href="/marcas">Ver los tostadores</Link>
+            <Link href="/">Ir al inicio</Link>
           </Button>
         </main>
       </div>
@@ -62,11 +62,11 @@ export default function VenderPage() {
               <Coffee className="size-4" /> Para tostadores
             </p>
             <h1 className="mt-4 font-serif text-5xl leading-[0.95] tracking-tight sm:text-6xl">
-              Vende tu café en El Buen Grano
+              Vende tu café en Mi Cafecito
             </h1>
             <p className="mt-6 text-base leading-relaxed text-[#5f4f48]">
-              Somos el marketplace donde las tostadurías independientes exponen su café. Tú te encargas del tueste;
-              nosotros conectamos tu marca con nuevos clientes.
+              Somos el marketplace donde los cafés de especialidad independientes encuentran nuevos clientes. Tú te encargas del tueste;
+              nosotros llevamos tu café a más tazas.
             </p>
             <a
               href="#solicitud"
@@ -104,7 +104,7 @@ export default function VenderPage() {
 
         <section id="solicitud" className="mx-auto max-w-2xl px-5 py-16 lg:px-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#b65f3d]">Solicitud de alta</p>
-          <h2 className="mt-3 font-serif text-4xl">Cuéntanos sobre tu tostaduría</h2>
+          <h2 className="mt-3 font-serif text-4xl">Cuéntanos sobre tu café</h2>
           <form
             onSubmit={(event) => {
               event.preventDefault()
@@ -113,7 +113,7 @@ export default function VenderPage() {
             className="mt-8 grid gap-5"
           >
             <label className="grid gap-2 text-sm font-medium">
-              Nombre de la tostaduría
+              Nombre de tu café
               <input
                 required
                 className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
@@ -134,7 +134,26 @@ export default function VenderPage() {
                 required
                 type="email"
                 className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
-                placeholder="tostaduria@email.com"
+                placeholder="contacto@tucafe.com"
+              />
+            </label>
+            <label className="grid gap-2 text-sm font-medium">
+              Teléfono / WhatsApp
+              <input
+                required
+                type="tel"
+                autoComplete="tel"
+                className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
+                placeholder="+51 987 654 321"
+              />
+            </label>
+            <label className="grid gap-2 text-sm font-medium">
+              Dirección
+              <input
+                required
+                autoComplete="street-address"
+                className="border-b border-[#cbbab0] bg-transparent px-1 py-3 outline-none focus:border-[#b65f3d]"
+                placeholder="Av. Principal 123, distrito"
               />
             </label>
             <label className="grid gap-2 text-sm font-medium">
@@ -146,7 +165,7 @@ export default function VenderPage() {
               />
             </label>
             <label className="grid gap-2 text-sm font-medium">
-              Cuéntanos sobre tu café
+              Detalles de tu café
               <textarea
                 required
                 rows={4}
@@ -164,7 +183,7 @@ export default function VenderPage() {
         </section>
       </main>
       <footer className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-xs text-[#806c62] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-        <p>© 2026 El Buen Grano</p>
+        <p>© 2026 Mi Cafecito</p>
         <p>Un marketplace para tostadores independientes.</p>
       </footer>
     </div>

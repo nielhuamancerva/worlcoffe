@@ -18,9 +18,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const seller = getSeller(slug)
-  if (!seller) return { title: 'Tostador no encontrado — El Buen Grano' }
+  if (!seller) return { title: 'Tostador no encontrado — Mi Cafecito' }
   return {
-    title: `${seller.name} — El Buen Grano`,
+    title: `${seller.name} — Mi Cafecito`,
     description: seller.description,
   }
 }
@@ -107,7 +107,7 @@ export default async function SellerPage({ params }: { params: Promise<{ slug: s
         </section>
       </main>
       <footer className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-xs text-[#806c62] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-        <p>© 2026 El Buen Grano</p>
+        <p>© 2026 Mi Cafecito</p>
         <p>Un marketplace para tostadores independientes.</p>
       </footer>
     </div>

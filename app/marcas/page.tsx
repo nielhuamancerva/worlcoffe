@@ -7,8 +7,8 @@ import { sellers } from '@/lib/sellers'
 import { products } from '@/lib/products'
 
 export const metadata: Metadata = {
-  title: 'Tostadores — El Buen Grano',
-  description: 'Descubre los tostadores independientes que exponen y venden su café en El Buen Grano.',
+  title: 'Tostadores — Mi Cafecito',
+  description: 'Descubre los tostadores independientes que exponen y venden su café en Mi Cafecito.',
 }
 
 export default function MarcasPage() {
@@ -21,7 +21,7 @@ export default function MarcasPage() {
             <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#b65f3d]">El marketplace</p>
             <h1 className="mt-3 font-serif text-5xl tracking-tight sm:text-6xl">Nuestros tostadores</h1>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-[#86756e]">
-              Cada marca es una empresa independiente que expone su café en El Buen Grano. Explora sus historias,
+              Cada marca es una empresa independiente que expone su café en Mi Cafecito. Explora sus historias,
               conoce sus orígenes y compra directamente de quienes tuestan.
             </p>
           </div>
@@ -57,12 +57,12 @@ export default function MarcasPage() {
             href="/vender"
             className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#b65f3d] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#95492f]"
           >
-            Vender en El Buen Grano <ArrowRight className="size-4" />
+            Vender en Mi Cafecito <ArrowRight className="size-4" />
           </Link>
         </section>
       </main>
       <footer className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-xs text-[#806c62] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-        <p>© 2026 El Buen Grano</p>
+        <p>© 2026 Mi Cafecito</p>
         <p>Un marketplace para tostadores independientes.</p>
       </footer>
     </div>
