@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
-import { ArrowRight, Camera, Coffee, MapPin, Sparkles, Store, Truck } from 'lucide-react'
+import { ArrowRight, Coffee, MapPin, Sparkles, Store } from 'lucide-react'
 import { BestSellers } from '@/components/BestSellers'
 import { Header } from '@/components/Header'
 import { ProductCard } from '@/components/ProductCard'
@@ -34,8 +34,7 @@ function Storefront() {
       <section id="filtros" className="mx-auto max-w-7xl px-5 pb-10 lg:px-8"><div className="flex flex-col gap-4 border-y border-[#e8ddd2] py-4 sm:flex-row sm:items-start"><div className="flex shrink-0 items-center gap-1 rounded-full bg-[#f0e6db] p-1">{filterModes.map((item) => <button key={item.id} onClick={() => selectMode(item.id)} aria-pressed={mode === item.id} className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition ${mode === item.id ? 'bg-[#2d211c] text-white shadow-sm' : 'text-[#806c62] hover:text-[#2d211c]'}`}><item.icon className="size-3.5" />{item.label}</button>)}</div><div className="flex min-w-0 flex-wrap gap-2">{activeMode.options.map((item) => <button key={item} onClick={() => setValue(item)} className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition ${value === item ? 'border-[#b65f3d] bg-[#b65f3d] text-white' : 'border-[#d9c9bd] text-[#806c62] hover:bg-[#f0e6db]'}`}>{mode === 'departamento' && item !== activeMode.options[0] && <MapPin className="size-3" />}{mode === 'signo' && <ZodiacIcon sign={item} className="text-sm" />}{item}</button>)}</div></div></section>
       <BestSellers match={matches} label={rankingLabel} />
       <section id="catalogo" className="mx-auto max-w-7xl px-5 pb-24 lg:px-8"><div className="grid grid-cols-2 gap-x-4 gap-y-12 sm:grid-cols-3 lg:grid-cols-4 lg:gap-x-6">{filtered.map((product) => <ProductCard key={product.id} product={product} />)}</div>{filtered.length === 0 && <p className="py-20 text-center text-[#86756e]">No encontramos ese café. Prueba con otra búsqueda.</p>}</section>
-      <section id="historia" className="border-y border-[#e8ddd2] bg-[#f0e7dc]"><div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-14 sm:flex-row sm:items-center sm:justify-between lg:px-8"><div className="flex items-center gap-5"><Truck className="size-8 text-[#b65f3d]" /><div><p className="font-serif text-xl">Envío gratis desde S/ 45</p><p className="mt-1 text-sm text-[#806c62]">Recibe tu café fresco en 24–72 horas.</p></div></div><p className="max-w-md text-sm leading-relaxed text-[#806c62]">Café de especialidad de todo el mundo para descubrir, elegir sin prisa y volver a tus favoritos.</p><Camera className="hidden size-5 text-[#806c62] sm:block" /></div></section>
-    </main><footer className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-xs text-[#806c62] sm:flex-row sm:items-center sm:justify-between lg:px-8"><p>© 2026 Mi Cafecito</p><div className="flex gap-5"><a href="/vender" className="hover:text-[#b65f3d]">Vende tu café</a></div></footer>
+    </main><footer className="border-t border-[#e8ddd2] bg-[#f0e7dc]"><div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-[#806c62] sm:flex-row sm:items-center sm:justify-between lg:px-8"><p>© 2026 Mi Cafecito</p><div className="flex gap-5"><a href="/vender" className="font-medium hover:text-[#b65f3d]">Vende tu café</a></div></div></footer>
   </div>
 }
 
